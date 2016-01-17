@@ -12,3 +12,7 @@ b:
     result: true
   - data: "three"
     result: false
+s:
+  - one
+  - two
+  - three

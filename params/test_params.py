@@ -31,7 +31,8 @@ def pytest_generate_tests(metafunc):
         if key in metafunc.fixturenames:
             metafunc.parametrize(
                 key,
-                [xfail(item) for item in data[key]],
+                [isinstance(item, dict) and xfail(item) or item \
+                        for item in data[key]],
             )
 
 
@@ -39,4 +40,9 @@ def test_add_ab(a, b):
     """ Test the addition of a and b.
     """
     assert(a + b)
+
+def test_no_xfail(s):
+    """ Test a list of parameters.
+    """
+    assert(s)
 
