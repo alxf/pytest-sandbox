@@ -1,0 +1,21 @@
+a:
+  - 1
+  - 2
+  - 3
+b:
+  - 3
+  - 2
+  - 1
+
+err_a:
+  - 1
+  - 2
+  - "3"
+
+sample_data:
+  - mydict:
+      key: null
+  - otherdict:
+      parent:
+        key: null
+
