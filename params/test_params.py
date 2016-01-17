@@ -17,19 +17,21 @@ def pytest_generate_tests(metafunc):
 
         metafunc -- the test function to parametrize
     """
-    fail = pytest.mark.xfail
+    xfail = lambda item: item['result'] and item['data'] \
+                or pytest.mark.xfail(item['data'])
+
     datapath = os.path.join(
         os.path.dirname(__file__),
         datafile
     )
     with io.open(datapath, 'rb') as fd:
         data = yaml.load(fd)
+
     for key in data.keys():
         if key in metafunc.fixturenames:
             metafunc.parametrize(
                 key,
-                [item['result'] and item['data'] or fail(item['data']) \
-                    for item in data[key]]
+                [xfail(item) for item in data[key]],
             )
 
 
@@ -37,11 +39,4 @@ def test_add_ab(a, b):
     """ Test the addition of a and b.
     """
     assert(a + b)
-
-
-def test_add_err_ab(err_a, b):
-    """ Test the addition of a and b with one string in the params.
-    """
-    assert(err_a + b)
-
 

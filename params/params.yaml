@@ -10,13 +10,5 @@ b:
     result: true
   - data: 2
     result: true
-  - data: 3
-    result: true
-err_a:
-  - data: 1
-    result: true
-  - data: 2
-    result: true
   - data: "three"
     result: false
-
