@@ -1,21 +1,22 @@
 a:
-  - 1
-  - 2
-  - 3
+  - data: 1
+    result: true
+  - data: 2
+    result: true
+  - data: 3
+    result: true
 b:
-  - 3
-  - 2
-  - 1
-
+  - data: 1
+    result: true
+  - data: 2
+    result: true
+  - data: 3
+    result: true
 err_a:
-  - 1
-  - 2
-  - "3"
-
-sample_data:
-  - mydict:
-      key: null
-  - otherdict:
-      parent:
-        key: null
+  - data: 1
+    result: true
+  - data: 2
+    result: true
+  - data: "three"
+    result: false
 
